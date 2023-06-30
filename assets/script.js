@@ -7,6 +7,7 @@ var numbers = ["1","2","3","4","5","6","7","8","9","0"];
 var passBuild = [];
 var tick = 0;
 var ranNumb = 0;
+var isUpper, isSpecial, isNumber;
 
 function characterAdd(charArray) {
   var ranNumb = Math.floor(Math.random() * charArray.length);
@@ -49,14 +50,19 @@ var passLength = 0;
     }
   }
 
-  //Confirm for Uppercase Characters
-  var isUpper = confirm("Would you like your password to include Uppercase Characters?");
-
-  //Confirm for Special Characters
-  var isSpecial = confirm("Would you like your password to include Special Characters?");
-
-  //Confirm for Numeric Characters
-  var isNumber = confirm("Would you like your password to include Numbers?")
+  // Force user to choose at least one Character Type. And loop until they do. 
+  extraChar = false;
+  do {
+    var isUpper = confirm("Would you like your password to include Uppercase Characters?");
+    var isSpecial = confirm("Would you like your password to include Special Characters?");
+    var isNumber = confirm("Would you like your password to include Numbers?");
+    if (!isUpper && !isSpecial && !isNumber) {
+      alert(`Sorry, you need to include at least one Character type.. ` )
+    }
+    else{
+      extraChar = true;
+    }
+  } while(!extraChar);
 
   //Password Builder
 
