@@ -44,6 +44,9 @@ var passLength = 0;
       var passLength = userInput;
       validLength = true;
     }
+    else if (userInput == null){
+      return;
+    }
     //Alert user of Incorrect Password length
     else {
       alert(`You entered ${userInput}, which is not between 8 and 128 Characters`)
