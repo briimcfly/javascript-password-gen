@@ -1,8 +1,18 @@
-// Assignment code here
-const alphaUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-const alphaLower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y", "z"];
-const specialChar = ["!","@","#","$","%","^","&","*","(",")","-","+",".",",","?","_",";","'",'"',"[","]"];
-const numbers = ["1","2","3","4","5","6","7","8","9","0"];
+// Global
+var alphaUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+var alphaLower = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y", "z"];
+var specialChar = ["!","@","#","$","%","^","&","*","(",")","-","+",".",",","?","_",";","'",'"',"[","]"];
+var numbers = ["1","2","3","4","5","6","7","8","9","0"];
+
+var passBuild = [];
+var tick = 0;
+var ranNumb = 0;
+
+function characterAdd(charArray) {
+  var ranNumb = Math.floor(Math.random() * charArray.length);
+  passBuild = passBuild.concat(charArray[ranNumb]);
+  tick++
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -40,47 +50,43 @@ var passLength = 0;
   }
 
   //Confirm for Uppercase Characters
-  const isUpper = confirm("Would you like your password to include Uppercase Characters?");
+  var isUpper = confirm("Would you like your password to include Uppercase Characters?");
 
   //Confirm for Special Characters
-  const isSpecial = confirm("Would you like your password to include Special Characters?");
+  var isSpecial = confirm("Would you like your password to include Special Characters?");
 
   //Confirm for Numeric Characters
-  const isNumber = confirm("Would you like your password to include Numbers?")
+  var isNumber = confirm("Would you like your password to include Numbers?")
 
   //Password Builder
-  var passBuild = [];
-  var tick = 0;
 
   while(tick < passLength) {
-
     //add a random lowercase character to the builder
-    var ranLower = Math.floor(Math.random() * alphaLower.length);
-    var passBuild = passBuild.concat(alphaLower[ranLower]);
-    tick++
+    characterAdd(alphaLower);
 
     //check if user wanted uppercase characters, then add a random index to builder
-    if (isUpper == true) {
-      var ranUppChar = Math.floor(Math.random() * alphaUpper.length);
-      var passBuild = passBuild.concat(alphaUpper[ranUppChar]);
-      tick++
+    if (isUpper) {
+      characterAdd(alphaUpper);
     }
 
     //check if user wanted number characters, then add a random index to builder
-    if (isNumber == true) {
-      var ranNumbChar = Math.floor(Math.random() * numbers.length);
-      var passBuild = passBuild.concat(numbers[ranNumbChar]);
-      tick++
+    if (isNumber) {
+      characterAdd(numbers);
     }
 
     //check if user wanted special characters, then add a random index to builder
-    if (isSpecial == true) {
-      var ranSpecialChar = Math.floor(Math.random() * specialChar.length);
-      var passBuild = passBuild.concat(specialChar[ranSpecialChar]);
-      tick++
+    if (isSpecial) {
+      characterAdd(specialChar);
     }
-
   }
+
+
+  // Shuffle the built array to avoid patterns 
+  function passShuffle(passBuild) {
+    passBuild.sort(() => Math.random() - 0.5);
+  }
+  passShuffle(passBuild);
+
   //returns built password and joins the array into a string. 
   return passBuild.join("");
 
