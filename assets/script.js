@@ -39,8 +39,6 @@ var passLength = 0;
     }
   }
 
-  console.log(passLength);
-
   //Confirm for Uppercase Characters
   const isUpper = confirm("Would you like your password to include Uppercase Characters?");
 
