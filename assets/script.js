@@ -21,6 +21,24 @@ generateBtn.addEventListener("click", writePassword);
 
 //Prompt user for password length 
 function generatePassword() {
+  validLength = false;
+
+  while (!validLength) {
+    let passLength = prompt("Please enter a password between 8 and 128 Characters");
+    if (passLength > 7 && passLength < 129) {
+      validLength = true;
+    }
+    else {
+      alert(`You entered ${passLength}, which is not between 8 and 128 Characters`)
+    }
+  }
+
+let uppChar = confirm("Would you like Uppercase Characters?");
+console.log(uppChar);
+
+console.log(`the length is ${passLength} and the Uppercase is ${uppChar}`);
+
+
 
 }
 
