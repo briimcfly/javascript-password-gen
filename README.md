@@ -32,7 +32,7 @@ The goal of this project is to create a web application that allows users to gen
 * Loops
 
 ## Deployment
-I have deployed my portfolio page on the web to make it live and accessible. You can view my portfolio page by following this link: [Javascript Generator]()
+I have deployed my portfolio page on the web to make it live and accessible. You can view my portfolio page by following this link: [Javascript Generator](https://briimcfly.github.io/javascript-password-gen/)
 
 
 ## Reflection 
